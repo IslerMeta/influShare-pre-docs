@@ -260,90 +260,90 @@ flowchart TD
         ReportGeneration --> FinancialReports[Financial Reports]
         ReportGeneration --> CustomReports[Custom Reports]
 
-    subgraph System Processes
-        AuthProcess --> |Trigger| NotificationService[Notification Service]
-        NotificationService --> EmailNotification[Email Notification]
-        NotificationService --> PushNotification[Push Notification]
-        NotificationService --> InAppNotification[In-App Notification]
-        AuthProcess --> |Log| ActivityLogging[Activity Logging]
-        ActivityLogging --> UserActivityLog[User Activity Log]
-        ActivityLogging --> SystemActivityLog[System Activity Log]
-        CreateCampaign & CreateClientCampaign --> |Trigger| CampaignApprovalProcess[Campaign Approval Process]
-        CampaignApprovalProcess --> |If needed| AdminReview[Admin Review]
-        ApplyCampaign --> |Trigger| ApplicationReviewProcess[Application Review Process]
-        SubmitContent --> |Trigger| ContentReviewProcess[Content Review Process]
-        RequestPayout --> |Trigger| PayoutProcess[Payout Process]
-        PayoutProcess --> PaymentGateway[Payment Gateway]
-        SearchInfluencers & SearchInfluencersAgency --> |Use| MatchingAlgorithm[Influencer Matching Algorithm]
-        ViewROI & CampaignAnalytics & AgencyAnalytics --> |Use| AnalyticsEngine[Analytics Engine]
-        AnalyticsEngine --> MachineLearningModels[Machine Learning Models]
-        ContentModeration --> |Use| AIContentAnalysis[AI Content Analysis]
-    end
-
-    subgraph External Integrations
-        Dashboard --> SocialMediaIntegration[Social Media Integration]
-        SocialMediaIntegration --> InstagramAPI[Instagram API]
-        SocialMediaIntegration --> YouTubeAPI[YouTube API]
-        SocialMediaIntegration --> TikTokAPI[TikTok API]
-        Dashboard --> AnalyticsIntegration[Analytics Integration]
-        AnalyticsIntegration --> GoogleAnalytics[Google Analytics]
-        AnalyticsIntegration --> FacebookInsights[Facebook Insights]
-        Dashboard --> CRMIntegration[CRM Integration]
-        CRMIntegration --> Salesforce[Salesforce]
-        CRMIntegration --> HubSpot[HubSpot]
-        PaymentGateway --> StripeIntegration[Stripe]
-        PaymentGateway --> PayPalIntegration[PayPal]
-        Dashboard --> ContentCreationTools[Content Creation Tools]
-        ContentCreationTools --> CanvaIntegration[Canva]
-        ContentCreationTools --> AdobeCreativeCloud[Adobe Creative Cloud]
-    end
-
-    subgraph Data Flow
-        UserData[User Data] --> DataProcessing[Data Processing]
-        CampaignData[Campaign Data] --> DataProcessing
-        ContentData[Content Data] --> DataProcessing
-        FinancialData[Financial Data] --> DataProcessing
-        DataProcessing --> DataStorage[Data Storage]
-        DataStorage --> DataAnalysis[Data Analysis]
-        DataAnalysis --> InsightGeneration[Insight Generation]
-        InsightGeneration --> DashboardDisplay[Dashboard Display]
-        DataStorage --> DataBackup
-        DataBackup --> DisasterRecovery[Disaster Recovery]
-    end
-
-    subgraph Security Measures
-        UserInput[User Input] --> InputValidation[Input Validation]
-        InputValidation --> SanitizeData[Sanitize Data]
-        SanitizeData --> AuthProcess
-        AuthProcess --> EncryptData[Encrypt Data]
-        EncryptData --> SecureStorage[Secure Storage]
-        UserActions[User Actions] --> RateLimiting[Rate Limiting]
-        AdminActions[Admin Actions] --> AuditLogging[Audit Logging]
-        ExternalRequests[External Requests] --> Firewall[Firewall]
-        Firewall --> IntrusionDetection[Intrusion Detection System]
-    end
-
-    subgraph Scalability
-        LoadBalancer[Load Balancer] --> WebServer1[Web Server 1]
-        LoadBalancer --> WebServer2[Web Server 2]
-        LoadBalancer --> WebServerN[Web Server N]
-        WebServer1 & WebServer2 & WebServerN --> ApplicationCache[Application Cache]
-        ApplicationCache --> DatabaseCluster[Database Cluster]
-        DatabaseCluster --> PrimaryDB[Primary DB]
-        DatabaseCluster --> SecondaryDB1[Secondary DB 1]
-        DatabaseCluster --> SecondaryDB2[Secondary DB 2]
-    end
-
-    %% Interactions between different user flows
-    ApplyCampaign -.-> |Submits Application| ReviewApplications
-    SubmitContent -.-> |Submits for Approval| ReviewContent
-    InviteInfluencer -.-> |Sends Invitation| BrowseCampaigns
-    AgencyCampaigns -.-> |Creates/Manages| ManageCampaigns
-    AgencyInfluencers -.-> |Discovers/Manages| FindInfluencers
-    CreateClientCampaign -.-> |Creates| ManageCampaigns
-    ReviewFlaggedContent -.-> |Moderates| SubmitContent
-    AIContentAnalysis -.-> |Assists| ReviewFlaggedContent
-
-    Dashboard --> Logout((Logout))
-    Logout --> Login
+        subgraph System Processes
+            AuthProcess --> |Trigger| NotificationService[Notification Service]
+            NotificationService --> EmailNotification[Email Notification]
+            NotificationService --> PushNotification[Push Notification]
+            NotificationService --> InAppNotification[In-App Notification]
+            AuthProcess --> |Log| ActivityLogging[Activity Logging]
+            ActivityLogging --> UserActivityLog[User Activity Log]
+            ActivityLogging --> SystemActivityLog[System Activity Log]
+            CreateCampaign & CreateClientCampaign --> |Trigger| CampaignApprovalProcess[Campaign Approval Process]
+            CampaignApprovalProcess --> |If needed| AdminReview[Admin Review]
+            ApplyCampaign --> |Trigger| ApplicationReviewProcess[Application Review Process]
+            SubmitContent --> |Trigger| ContentReviewProcess[Content Review Process]
+            RequestPayout --> |Trigger| PayoutProcess[Payout Process]
+            PayoutProcess --> PaymentGateway[Payment Gateway]
+            SearchInfluencers & SearchInfluencersAgency --> |Use| MatchingAlgorithm[Influencer Matching Algorithm]
+            ViewROI & CampaignAnalytics & AgencyAnalytics --> |Use| AnalyticsEngine[Analytics Engine]
+            AnalyticsEngine --> MachineLearningModels[Machine Learning Models]
+            ContentModeration --> |Use| AIContentAnalysis[AI Content Analysis]
+        end
+    
+        subgraph External Integrations
+            Dashboard --> SocialMediaIntegration[Social Media Integration]
+            SocialMediaIntegration --> InstagramAPI[Instagram API]
+            SocialMediaIntegration --> YouTubeAPI[YouTube API]
+            SocialMediaIntegration --> TikTokAPI[TikTok API]
+            Dashboard --> AnalyticsIntegration[Analytics Integration]
+            AnalyticsIntegration --> GoogleAnalytics[Google Analytics]
+            AnalyticsIntegration --> FacebookInsights[Facebook Insights]
+            Dashboard --> CRMIntegration[CRM Integration]
+            CRMIntegration --> Salesforce[Salesforce]
+            CRMIntegration --> HubSpot[HubSpot]
+            PaymentGateway --> StripeIntegration[Stripe]
+            PaymentGateway --> PayPalIntegration[PayPal]
+            Dashboard --> ContentCreationTools[Content Creation Tools]
+            ContentCreationTools --> CanvaIntegration[Canva]
+            ContentCreationTools --> AdobeCreativeCloud[Adobe Creative Cloud]
+        end
+    
+        subgraph Data Flow
+            UserData[User Data] --> DataProcessing[Data Processing]
+            CampaignData[Campaign Data] --> DataProcessing
+            ContentData[Content Data] --> DataProcessing
+            FinancialData[Financial Data] --> DataProcessing
+            DataProcessing --> DataStorage[Data Storage]
+            DataStorage --> DataAnalysis[Data Analysis]
+            DataAnalysis --> InsightGeneration[Insight Generation]
+            InsightGeneration --> DashboardDisplay[Dashboard Display]
+            DataStorage --> DataBackup
+            DataBackup --> DisasterRecovery[Disaster Recovery]
+        end
+    
+        subgraph Security Measures
+            UserInput[User Input] --> InputValidation[Input Validation]
+            InputValidation --> SanitizeData[Sanitize Data]
+            SanitizeData --> AuthProcess
+            AuthProcess --> EncryptData[Encrypt Data]
+            EncryptData --> SecureStorage[Secure Storage]
+            UserActions[User Actions] --> RateLimiting[Rate Limiting]
+            AdminActions[Admin Actions] --> AuditLogging[Audit Logging]
+            ExternalRequests[External Requests] --> Firewall[Firewall]
+            Firewall --> IntrusionDetection[Intrusion Detection System]
+        end
+    
+        subgraph Scalability
+            LoadBalancer[Load Balancer] --> WebServer1[Web Server 1]
+            LoadBalancer --> WebServer2[Web Server 2]
+            LoadBalancer --> WebServerN[Web Server N]
+            WebServer1 & WebServer2 & WebServerN --> ApplicationCache[Application Cache]
+            ApplicationCache --> DatabaseCluster[Database Cluster]
+            DatabaseCluster --> PrimaryDB[Primary DB]
+            DatabaseCluster --> SecondaryDB1[Secondary DB 1]
+            DatabaseCluster --> SecondaryDB2[Secondary DB 2]
+        end
+    
+        %% Interactions between different user flows
+        ApplyCampaign -.-> |Submits Application| ReviewApplications
+        SubmitContent -.-> |Submits for Approval| ReviewContent
+        InviteInfluencer -.-> |Sends Invitation| BrowseCampaigns
+        AgencyCampaigns -.-> |Creates/Manages| ManageCampaigns
+        AgencyInfluencers -.-> |Discovers/Manages| FindInfluencers
+        CreateClientCampaign -.-> |Creates| ManageCampaigns
+        ReviewFlaggedContent -.-> |Moderates| SubmitContent
+        AIContentAnalysis -.-> |Assists| ReviewFlaggedContent
+    
+        Dashboard --> Logout((Logout))
+        Logout --> Login
 ```
